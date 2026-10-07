@@ -17,42 +17,44 @@ struct NutritionView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack(alignment: .center) {
-                Text("Nutritions")
-                    .font(.title)
-                    .bold()
-                Spacer()
-                IconButton(systemImage: "xmark") {
-                    dismiss()
+        NavigationView {
+            VStack(alignment: .leading, spacing: 16) {
+                VStack(spacing: 0) {
+                    NutritionRow(title: "Calories", value: "\(nutrition.calories.formatted(.number)) kcal")
+                    NutritionRow(title: "Protein", value: formatted(nutrition.protein, unit: "g"))
+                    NutritionRow(title: "Carbohydrates", value: formatted(nutrition.carbohydrates, unit: "g"))
+                    NutritionRow(title: "Sugars", value: formatted(nutrition.sugars, unit: "g"))
+                    NutritionRow(title: "Fat", value: formatted(nutrition.fat, unit: "g"))
+                    NutritionRow(title: "Saturated Fat", value: formatted(nutrition.saturatedFat, unit: "g"))
+                    NutritionRow(title: "Fiber", value: formatted(nutrition.fiber, unit: "g"))
+                    NutritionRow(title: "Salt", value: formatted(nutrition.salt, unit: "g"))
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .strokeBorder(.quaternary, lineWidth: 1)
+                )
+            }
+            .padding()
+            .background(.white)
+            .navigationTitle("Nutritions")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    IconButton(systemImage: "xmark") {
+                        dismiss()
+                    }
+                    .accessibilityLabel("Close settings screen")
                 }
             }
-
-            VStack(spacing: 0) {
-                NutritionRow(title: "Calories", value: "\(nutrition.calories.formatted(.number)) kcal")
-                NutritionRow(title: "Protein", value: formatted(nutrition.protein, unit: "g"))
-                NutritionRow(title: "Carbohydrates", value: formatted(nutrition.carbohydrates, unit: "g"))
-                NutritionRow(title: "Sugars", value: formatted(nutrition.sugars, unit: "g"))
-                NutritionRow(title: "Fat", value: formatted(nutrition.fat, unit: "g"))
-                NutritionRow(title: "Saturated Fat", value: formatted(nutrition.saturatedFat, unit: "g"))
-                NutritionRow(title: "Fiber", value: formatted(nutrition.fiber, unit: "g"))
-                NutritionRow(title: "Salt", value: formatted(nutrition.salt, unit: "g"))
-            }
-            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-            .overlay(
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .strokeBorder(.quaternary, lineWidth: 1)
-            )
         }
-        .padding()
-        .background(.white)
     }
 }
 
 private struct NutritionRow: View {
     let title: String
     let value: String
-
+    
     var body: some View {
         HStack {
             Text(title)
@@ -77,7 +79,7 @@ private struct NutritionRow: View {
 #Preview {
     @Previewable @State var nutritions: Nutrition = Nutrition(calories: 456)
     @State var showingSheet: Bool = true
-
+    
     VStack {
         Text("Nutrition Preview")
     }

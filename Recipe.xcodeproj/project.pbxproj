@@ -35,6 +35,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		DD7A065E30769AFF0041D17A /* Screenshots */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 		DDA1703030683549009BCAC5 /* Recipe */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Recipe;
@@ -74,6 +79,7 @@
 		DDA1702530683549009BCAC5 = {
 			isa = PBXGroup;
 			children = (
+				DD7A065E30769AFF0041D17A /* Screenshots */,
 				DD9860B9307508CB0006D571 /* README.md */,
 				DDA1703030683549009BCAC5 /* Recipe */,
 				DDA1703E3068354A009BCAC5 /* RecipeTests */,
@@ -106,6 +112,7 @@
 			buildRules = (
 			);
 			fileSystemSynchronizedGroups = (
+				DD7A065E30769AFF0041D17A /* Screenshots */,
 				DDA1703030683549009BCAC5 /* Recipe */,
 			);
 			name = Recipe;
